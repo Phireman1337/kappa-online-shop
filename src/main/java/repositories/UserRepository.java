@@ -1,6 +1,6 @@
 package repositories;
 
-import domain.User;
+import domain.product.mongo.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -3,23 +3,18 @@ package app;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
-import java.util.ArrayList;
+import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.Collection;
 
 @Configuration
 public class MongoConfig extends AbstractMongoConfiguration{
-
-
-//    @Bean
-//    public MongoClientFactoryBean mongoClientFactoryBean(){
-//        MongoClientFactoryBean bean = new MongoClientFactoryBean();
-//        bean.setHost("localhost");
-//        return bean;
-//    }
 
     @Override
     protected String getDatabaseName() {
@@ -35,4 +30,12 @@ public class MongoConfig extends AbstractMongoConfiguration{
     protected Collection<String> getMappingBasePackages() {
         return Arrays.asList("domain");
     }
+
+
+    @Bean
+    @ConfigurationProperties("app.datasource")
+    public DataSource getDataSource(){
+        return DataSourceBuilder.create().build();
+    }
+
 }

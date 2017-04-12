@@ -1,27 +1,25 @@
 package app;
 
-import controllers.GreetingController;
+import domain.customer.mysql.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import repositories.ProductRepository;
+import domain.product.mongo.ProductRepository;
 import repositories.UserRepository;
-
-import java.util.Arrays;
 
 
 @SpringBootApplication(scanBasePackages = {"controllers"})
-@EnableMongoRepositories(basePackageClasses = {ProductRepository.class})
-//@ComponentScan("repositories")
-//@EnableAutoConfiguration
-//@Configuration
-//@ComponentScan(basePackageClasses = {ProductRepository.class, GreetingController.class, Application.class, })
+@EnableMongoRepositories(basePackageClasses = {ProductRepository.class, UserRepository.class})
+@EnableJpaRepositories(basePackages = "domain")
+@EntityScan(basePackages = "domain")
 public class Application {
 
+
     public static void main(String[] args) {
+
         SpringApplication.run(Application.class, args);
 
     }
