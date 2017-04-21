@@ -16,7 +16,7 @@
     <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-mongodb:1.10.1.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:1.5.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:1.5.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.35" level="project" />
+    <orderEntry type="library" name="Gradle: org.mariadb.jdbc:mariadb-java-client:1.5.9" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:1.5.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE" level="project" />

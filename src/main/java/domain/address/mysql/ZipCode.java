@@ -2,6 +2,7 @@ package domain.address.mysql;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "ZipCode")
@@ -22,6 +23,10 @@ public class ZipCode {
     @ManyToOne
     @JoinColumn(name = "StateOrProvinceID")
     private State state;
+
+    @OneToMany(mappedBy = "ZipCode")
+    private Set<ZipCode> zipCodeSet;
+
 
     protected ZipCode(){
 
