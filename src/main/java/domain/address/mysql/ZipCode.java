@@ -25,7 +25,7 @@ public class ZipCode {
     private State state;
 
     @OneToMany(mappedBy = "ZipCode")
-    private Set<ZipCode> zipCodeSet;
+    private Set<Address> zipCodeSet;
 
 
     protected ZipCode(){
@@ -69,5 +69,13 @@ public class ZipCode {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public Set<Address> getZipCodeSet() {
+        return zipCodeSet;
+    }
+
+    public void setZipCodeSet(Set<Address> zipCodeSet) {
+        this.zipCodeSet = zipCodeSet;
     }
 }

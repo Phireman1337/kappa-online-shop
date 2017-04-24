@@ -1,8 +1,13 @@
 package domain.customer.mysql;
 
 
+import domain.basket.mysql.Basket;
+import domain.order.Order;
+import domain.review.mysql.Review;
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "Customer")
@@ -30,6 +35,15 @@ public class Customer {
 
     @Column(name = "Password")
     private String password;
+
+    @OneToOne(mappedBy = "CustomerID")
+    private Basket basket;
+
+    @OneToMany(mappedBy = "Reviewer")
+    private Set<Review> reviews;
+
+    @OneToMany(mappedBy = "CustomerID")
+    private Set<Order> orders;
 
     protected Customer(){
 
@@ -98,5 +112,29 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 }
