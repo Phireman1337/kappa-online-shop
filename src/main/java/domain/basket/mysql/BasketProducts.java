@@ -25,6 +25,10 @@ public class BasketProducts {
     @Column(name = "Quantity", nullable = false)
     private int quantity;
 
+    protected BasketProducts(){
+
+    }
+
     public BasketProducts(Basket basket, Product product, int quantity) {
         this.basket = basket;
         this.product = product;

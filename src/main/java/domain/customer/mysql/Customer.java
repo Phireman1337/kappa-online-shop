@@ -39,7 +39,7 @@ public class Customer {
     @OneToOne(mappedBy = "customer")
     private Basket basket;
 
-    @OneToMany(mappedBy = "reviewer")
+    @OneToMany(mappedBy = "customer")
     private Set<Review> reviews;
 
     @OneToMany(mappedBy = "customer")
