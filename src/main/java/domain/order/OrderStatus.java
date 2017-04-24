@@ -1,10 +1,8 @@
 package domain.order;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "OrderStatus")
@@ -14,8 +12,15 @@ public class OrderStatus {
     @Column(name = "OrderStatusCode", nullable = false, unique = true)
     private String orderStatusCode;
 
-    @Column(name = "OrderStatusDescription")
+    @Column(name = "OrderStatusDescription", nullable = false)
     private String orderStatusDescription;
+
+    @OneToMany(mappedBy = "orderStatus")
+    private Set<Order> orders;
+
+    protected OrderStatus(){
+
+    }
 
     public OrderStatus(String orderStatusCode, String orderStatusDescription) {
         this.orderStatusCode = orderStatusCode;
@@ -38,4 +43,11 @@ public class OrderStatus {
         this.orderStatusDescription = orderStatusDescription;
     }
 
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 }

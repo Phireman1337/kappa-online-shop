@@ -2,8 +2,10 @@ package domain.address.mysql;
 
 
 import domain.customer.mysql.Customer;
+import domain.order.Order;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
@@ -34,6 +36,16 @@ public class Address {
 
     @Column(name = "AddressType")
     private String addressType;
+
+    @OneToMany(mappedBy = "billingAddress")
+    private Set<Order> billingOrders;
+
+    @OneToMany(mappedBy = "deliveryAddress")
+    private Set<Order> deliveryOrders;
+
+    protected Address(){
+
+    }
 
     public Address(String firstName, String lastName, String street, ZipCode zipCode, Customer customer, String addressType) {
         this.firstName = firstName;
@@ -98,5 +110,21 @@ public class Address {
 
     public void setAddressType(String addressType) {
         this.addressType = addressType;
+    }
+
+    public Set<Order> getBillingOrders() {
+        return billingOrders;
+    }
+
+    public void setBillingOrders(Set<Order> billingOrders) {
+        this.billingOrders = billingOrders;
+    }
+
+    public Set<Order> getDeliveryOrders() {
+        return deliveryOrders;
+    }
+
+    public void setDeliveryOrders(Set<Order> deliveryOrders) {
+        this.deliveryOrders = deliveryOrders;
     }
 }

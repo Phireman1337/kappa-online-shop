@@ -36,13 +36,13 @@ public class Customer {
     @Column(name = "Password")
     private String password;
 
-    @OneToOne(mappedBy = "CustomerID")
+    @OneToOne(mappedBy = "customer")
     private Basket basket;
 
-    @OneToMany(mappedBy = "Reviewer")
+    @OneToMany(mappedBy = "reviewer")
     private Set<Review> reviews;
 
-    @OneToMany(mappedBy = "CustomerID")
+    @OneToMany(mappedBy = "customer")
     private Set<Order> orders;
 
     protected Customer(){

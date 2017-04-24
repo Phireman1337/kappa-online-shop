@@ -1,7 +1,5 @@
 package domain.product.mysql;
 
-
-
 import domain.basket.mysql.BasketProducts;
 import domain.review.mysql.Review;
 
@@ -17,10 +15,10 @@ public class Product {
     @Column(name = "ProductID", nullable = false, unique = true)
     private int productID;
 
-    @OneToMany(mappedBy = "ProductID")
+    @OneToMany(mappedBy = "product")
     private Set<Review> reviewSet;
 
-    @OneToMany(mappedBy = "ProductID")
+    @OneToMany(mappedBy = "product")
     private Set<BasketProducts> basketProductsSet;
 
     protected Product(){
@@ -37,5 +35,21 @@ public class Product {
 
     public void setProductID(int productID) {
         this.productID = productID;
+    }
+
+    public Set<Review> getReviewSet() {
+        return reviewSet;
+    }
+
+    public void setReviewSet(Set<Review> reviewSet) {
+        this.reviewSet = reviewSet;
+    }
+
+    public Set<BasketProducts> getBasketProductsSet() {
+        return basketProductsSet;
+    }
+
+    public void setBasketProductsSet(Set<BasketProducts> basketProductsSet) {
+        this.basketProductsSet = basketProductsSet;
     }
 }

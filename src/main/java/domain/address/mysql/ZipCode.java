@@ -24,7 +24,7 @@ public class ZipCode {
     @JoinColumn(name = "StateOrProvinceID")
     private State state;
 
-    @OneToMany(mappedBy = "ZipCode")
+    @OneToMany(mappedBy = "zipCode")
     private Set<Address> zipCodeSet;
 
 

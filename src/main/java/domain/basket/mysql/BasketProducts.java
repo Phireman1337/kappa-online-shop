@@ -22,7 +22,7 @@ public class BasketProducts {
     @JoinColumn(name = "ProductID")
     private Product product;
 
-    @Column(name = "Quantity")
+    @Column(name = "Quantity", nullable = false)
     private int quantity;
 
     public BasketProducts(Basket basket, Product product, int quantity) {

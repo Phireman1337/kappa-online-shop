@@ -14,12 +14,16 @@ public class Basket {
     @Column(name = "BasketID")
     private int basketID;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "CustomerID")
     private Customer customer;
 
     @Column(name = "SessionID")
     private String sessionID;
+
+    protected Basket(){
+
+    }
 
     public Basket(Customer customer, String sessionID) {
         this.customer = customer;

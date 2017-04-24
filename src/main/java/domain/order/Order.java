@@ -6,6 +6,7 @@ import domain.customer.mysql.Customer;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "Order")
@@ -43,6 +44,13 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "DeliveryAddressID")
     private Address deliveryAddress;
+
+    @OneToMany(mappedBy = "order")
+    private Set<OrderedProduct> orderedProducts;
+
+    protected Order(){
+
+    }
 
     public Order(Customer customer, String billingName, String deliveryName, String emailAddress, Date purchaseDate, OrderStatus orderStatus, Address billingAddress, Address deliveryAddress) {
         this.customer = customer;

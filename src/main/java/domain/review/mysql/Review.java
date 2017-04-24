@@ -29,6 +29,10 @@ public class Review {
     @JoinColumn(name = "ProductID", nullable = false)
     private Product product;
 
+    protected Review(){
+
+    }
+
     public Review(int reviewRating, String reviewText, Customer customer, Product product) {
         this.reviewRating = reviewRating;
         this.reviewText = reviewText;
