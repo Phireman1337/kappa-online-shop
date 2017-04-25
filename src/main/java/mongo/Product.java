@@ -1,16 +1,20 @@
-package domain.product.mongo;
+package mongo;
 
 import com.mongodb.DBObject;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 
-@Document(collection = "collection1")
+@Document(collection = "products")
 public class Product {
 
-    private String sku;
+//    private String sku; // disabled until we have a service to generate these
+
+    @Id
+    private String id;
 
     @Indexed
     private String title;
@@ -21,30 +25,23 @@ public class Product {
 
     private List<String> subtypes;
 
-    private Shipping shipping;
+    private List<String> photoUrls;
 
-    private Pricing pricing;
+    private ShippingDetail shipping;
+
+    private PricingDetail pricing;
 
     private DBObject details;
 
-    public Product(String sku, String title, String description, String type, List<String> subtypes, Shipping shipping, Pricing pricing, DBObject details) {
-        this.sku = sku;
+    public Product(String title, String description, String type, List<String> subtypes, List<String> photoUrls, ShippingDetail shipping, PricingDetail pricing, DBObject details) {
         this.title = title;
         this.description = description;
         this.type = type;
         this.subtypes = subtypes;
+        this.photoUrls = photoUrls;
         this.shipping = shipping;
         this.pricing = pricing;
         this.details = details;
-    }
-
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
     }
 
     public String getTitle() {
@@ -79,19 +76,27 @@ public class Product {
         this.subtypes = subtypes;
     }
 
-    public Shipping getShipping() {
+    public List<String> getPhotoUrls() {
+        return photoUrls;
+    }
+
+    public void setPhotoUrls(List<String> photoUrls) {
+        this.photoUrls = photoUrls;
+    }
+
+    public ShippingDetail getShipping() {
         return shipping;
     }
 
-    public void setShipping(Shipping shipping) {
+    public void setShipping(ShippingDetail shipping) {
         this.shipping = shipping;
     }
 
-    public Pricing getPricing() {
+    public PricingDetail getPricing() {
         return pricing;
     }
 
-    public void setPricing(Pricing pricing) {
+    public void setPricing(PricingDetail pricing) {
         this.pricing = pricing;
     }
 
@@ -101,5 +106,9 @@ public class Product {
 
     public void setDetails(DBObject details) {
         this.details = details;
+    }
+
+    public String getId(){
+        return this.id;
     }
 }

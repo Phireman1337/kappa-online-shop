@@ -1,8 +1,10 @@
-package domain.product.mongo;
+package mongo;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
+/**
+ * Dummy test class
+ */
 @Document(collection = "collection1")
 public class User {
 
